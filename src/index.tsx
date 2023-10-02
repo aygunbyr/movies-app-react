@@ -19,6 +19,7 @@ import { MoviesLayout } from './layouts/MoviesLayout/MoviesLayout';
 import Movies from './pages/Movies/Movies';
 import Favorites from './pages/Favorites/Favorites';
 import { FAVORITES_PATH, MOVIES_PATH } from './constants';
+import { MovieDetail } from './pages/MovieDetail/MovieDetail';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,6 +27,7 @@ const router = createBrowserRouter(
       <Route index element={<Navigate replace to={MOVIES_PATH} />} />
       <Route path={MOVIES_PATH} element={<Movies />} />
       <Route path={FAVORITES_PATH} element={<Favorites />} />
+      <Route path="/movie/:imdbID" element={<MovieDetail />} />
     </Route>
   )
 );

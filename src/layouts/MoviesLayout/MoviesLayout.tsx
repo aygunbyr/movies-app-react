@@ -100,8 +100,8 @@ export const MoviesLayout = () => {
   };
 
   const handleSearchTextSubmit = async () => {
-    await dispatch(setSearchTerm(searchText));
-    await dispatch(fetchMovies());
+    dispatch(setSearchTerm(searchText));
+    dispatch(fetchMovies());
     navigate('/movies');
   };
 
