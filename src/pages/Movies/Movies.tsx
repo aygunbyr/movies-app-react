@@ -4,7 +4,7 @@ import { useAppSelector } from '../../redux/hooks';
 import { selectSearchTerm } from '../../redux/features/movies/moviesSlice';
 
 const Movies = () => {
-  const searchTerm = useAppSelector((state) => selectSearchTerm);
+  const searchTerm = useAppSelector(selectSearchTerm);
 
   return (
     <div>
