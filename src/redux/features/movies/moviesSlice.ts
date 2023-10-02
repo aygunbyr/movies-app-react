@@ -48,7 +48,7 @@ export const fetchMovies = createAsyncThunk(
       const json = await response.json();
       return json.Search;
     } catch (error) {
-      return rejectWithValue(error);
+      return rejectWithValue((error as Error).message);
     }
   }
 );
@@ -67,7 +67,7 @@ export const fetchMovie = createAsyncThunk(
       const json = await response.json();
       return json;
     } catch (error) {
-      return rejectWithValue(error);
+      return rejectWithValue((error as Error).message);
     }
   }
 );
