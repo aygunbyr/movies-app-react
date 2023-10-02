@@ -49,6 +49,19 @@ export const moviesSlice = createSlice({
     setSearchTerm: (state, action: PayloadAction<string>) => {
       state.searchTerm = action.payload;
     },
+    toggleFavoriteMovie: (state, action) => {
+      const movie = action.payload;
+      const isFavorite = state.favorites.some(
+        (favoriteMovie) => favoriteMovie.imdbID === movie.imdbID
+      );
+      if (!isFavorite) {
+        state.favorites.push(movie);
+      } else {
+        state.favorites = state.favorites.filter(
+          (favoriteMovie) => favoriteMovie.imdbID !== movie.imdbID
+        );
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -69,10 +82,11 @@ export const moviesSlice = createSlice({
   },
 });
 
-export const { setSearchTerm } = moviesSlice.actions;
+export const { setSearchTerm, toggleFavoriteMovie } = moviesSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectSearchTerm = (state: RootState) => state.movies.searchTerm;
 export const selectMovies = (state: RootState) => state.movies.movies;
+export const selectFavorites = (state: RootState) => state.movies.favorites;
 
 export default moviesSlice.reducer;
