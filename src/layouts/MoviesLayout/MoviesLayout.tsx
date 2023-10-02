@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, Link, useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import AppBar from '@mui/material/AppBar';
@@ -18,7 +18,11 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
 import { useAppDispatch } from '../../redux/hooks';
-import { setSearchTerm } from '../../redux/features/movies/moviesSlice';
+import {
+  fetchMovies,
+  setSearchTerm,
+} from '../../redux/features/movies/moviesSlice';
+import { FAVORITES_PATH, MOVIES_PATH } from '../../constants';
 
 const drawerWidth = 240;
 
@@ -26,12 +30,12 @@ const menu = [
   {
     label: 'All Movies',
     icon: <LocalMoviesIcon />,
-    path: '/movies',
+    path: MOVIES_PATH,
   },
   {
     label: 'Favorites',
     icon: <StarIcon />,
-    path: '/favorites',
+    path: FAVORITES_PATH,
   },
 ];
 
@@ -80,12 +84,23 @@ export const MoviesLayout = () => {
 
   const dispatch = useAppDispatch();
 
+  const navigate = useNavigate();
+
   const handleSearchTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
   };
 
+  const handleSearchPressEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleSearchTextSubmit();
+    }
+  };
+
   const handleSearchTextSubmit = async () => {
     await dispatch(setSearchTerm(searchText));
+    await dispatch(fetchMovies());
+    navigate('/movies');
   };
 
   return (
@@ -107,6 +122,7 @@ export const MoviesLayout = () => {
               placeholder="Movie..."
               inputProps={{ 'aria-label': 'search' }}
               onChange={handleSearchTextChange}
+              onKeyDown={handleSearchPressEnter}
               value={searchText}
               style={{ width: '360px' }}
             />

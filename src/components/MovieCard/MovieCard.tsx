@@ -7,23 +7,27 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { red } from '@mui/material/colors';
+import { Movie } from '../../types/Movie';
 
-export const MovieCard = () => {
+interface MovieCardProperties {
+  movie: Movie;
+}
+
+export const MovieCard = ({ movie }: MovieCardProperties) => {
   const [favorited, setFavorited] = useState(false);
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ width: 345 }}>
       <CardMedia
         component="img"
-        height="194"
-        image="/assets/jakob-owens-CiUR8zISX60-unsplash.jpg"
-        alt="Movie name"
+        height="300"
+        image={movie.Poster}
+        alt={movie.Title}
+        style={{ objectFit: 'cover' }}
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the
-          mussels, if you like.
+          {movie.Title}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
