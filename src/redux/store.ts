@@ -16,6 +16,10 @@ export const store = configureStore({
     movies: moviesReducer,
     favorites: persistedReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export const persistor = persistStore(store);
