@@ -11,6 +11,8 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
 
 import { MoviesLayout } from './layouts/MoviesLayout/MoviesLayout';
 import Movies from './pages/Movies/Movies';
@@ -27,7 +29,9 @@ const router = createBrowserRouter(
 );
 
 createRoot(document.getElementById('root') as HTMLElement).render(
-  <RouterProvider router={router} />
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
