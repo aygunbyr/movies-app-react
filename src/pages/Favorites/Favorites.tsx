@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import { MovieCard } from '../../components/MovieCard/MovieCard';
 import { useAppSelector } from '../../redux/hooks';
-import { selectFavorites } from '../../redux/features/movies/moviesSlice';
+import { selectFavorites } from '../../redux/features/favorites/favoritesSlice';
 
 const Movies = () => {
   const favorites = useAppSelector(selectFavorites);

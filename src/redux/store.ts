@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import moviesReducer from './features/movies/moviesSlice';
+import favoritesReducer from './features/favorites/favoritesSlice';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -8,11 +9,12 @@ const persistConfig = {
   storage,
 };
 
-const persistedReducer = persistReducer(persistConfig, moviesReducer);
+const persistedReducer = persistReducer(persistConfig, favoritesReducer);
 
 export const store = configureStore({
   reducer: {
-    movies: persistedReducer,
+    movies: moviesReducer,
+    favorites: persistedReducer,
   },
 });
 

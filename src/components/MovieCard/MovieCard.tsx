@@ -11,7 +11,7 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   selectFavorites,
   toggleFavoriteMovie,
-} from '../../redux/features/movies/moviesSlice';
+} from '../../redux/features/favorites/favoritesSlice';
 import { useCallback, useMemo } from 'react';
 interface MovieCardProperties {
   movie: Movie;
