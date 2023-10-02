@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Outlet, Link, useNavigate } from 'react-router-dom';
+import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import AppBar from '@mui/material/AppBar';
@@ -86,6 +86,8 @@ export const MoviesLayout = () => {
 
   const navigate = useNavigate();
 
+  const { pathname } = useLocation();
+
   const handleSearchTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
   };
@@ -153,7 +155,7 @@ export const MoviesLayout = () => {
                 style={{ textDecoration: 'none', color: 'inherit' }}
               >
                 <ListItem disablePadding>
-                  <ListItemButton>
+                  <ListItemButton selected={pathname === item.path}>
                     <ListItemIcon>{item.icon}</ListItemIcon>
                     <ListItemText primary={item.label} />
                   </ListItemButton>

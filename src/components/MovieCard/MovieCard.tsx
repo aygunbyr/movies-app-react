@@ -40,9 +40,10 @@ export const MovieCard = ({ movie }: MovieCardProperties) => {
         style={{ objectFit: 'cover' }}
       />
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="h5" color="text.secondary">
           {movie.Title}
         </Typography>
+        <Typography variant="subtitle1">{movie.Year}</Typography>
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites" onClick={toggleFavorite}>
