@@ -5,17 +5,29 @@ import {
   selectMovies,
   selectSearchTerm,
 } from '../../redux/features/movies/moviesSlice';
+import { Loading } from '../../components/Loading/Loading';
 
 const Movies = () => {
   const searchTerm = useAppSelector(selectSearchTerm);
   const { data: movies, error, isLoading } = useAppSelector(selectMovies);
 
   if (isLoading) {
-    return <div>Loading movies...</div>;
+    return (
+      <>
+        <Typography variant="h3">All Movies</Typography>
+        <Typography variant="h6">Loading...</Typography>
+        <Loading />
+      </>
+    );
   }
 
   if (error) {
-    return <div>Error fetching movies: {error}</div>;
+    return (
+      <>
+        <Typography variant="h3">All Movies</Typography>
+        <Typography variant="h6">Error fetching movies: {error}</Typography>
+      </>
+    );
   }
 
   return (
