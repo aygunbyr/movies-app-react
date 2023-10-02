@@ -112,26 +112,29 @@ export const MoviesLayout = () => {
         position="fixed"
         sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
       >
-        <Toolbar>
+        <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
           <Typography variant="h6" noWrap component="div">
             Movies App
           </Typography>
-          <Search style={{ marginLeft: '30%' }}>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Movie..."
-              inputProps={{ 'aria-label': 'search' }}
-              onChange={handleSearchTextChange}
-              onKeyDown={handleSearchPressEnter}
-              value={searchText}
-              style={{ width: '360px' }}
-            />
-          </Search>
-          <Button variant="contained" onClick={handleSearchTextSubmit}>
-            Search
-          </Button>
+          <div style={{ display: 'inline-flex' }}>
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Movie..."
+                inputProps={{ 'aria-label': 'search' }}
+                onChange={handleSearchTextChange}
+                onKeyDown={handleSearchPressEnter}
+                value={searchText}
+                style={{ width: 400 }}
+              />
+            </Search>
+            <Button variant="contained" onClick={handleSearchTextSubmit}>
+              Search
+            </Button>
+          </div>
+          <div></div>
         </Toolbar>
       </AppBar>
       <Drawer
