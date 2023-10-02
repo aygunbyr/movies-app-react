@@ -12,7 +12,8 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { Provider } from 'react-redux';
-import { store } from './redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './redux/store';
 
 import { MoviesLayout } from './layouts/MoviesLayout/MoviesLayout';
 import Movies from './pages/Movies/Movies';
@@ -31,7 +32,9 @@ const router = createBrowserRouter(
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <Provider store={store}>
-    <RouterProvider router={router} />
+    <PersistGate loading={null} persistor={persistor}>
+      <RouterProvider router={router} />
+    </PersistGate>
   </Provider>
 );
 
