@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
+import Container from '@mui/system/Container';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import AppBar from '@mui/material/AppBar';
@@ -100,7 +101,7 @@ export const MoviesLayout = () => {
   };
 
   const handleSearchTextSubmit = async () => {
-    dispatch(setSearchTerm(searchText));
+    dispatch(setSearchTerm(searchText.trim()));
     dispatch(fetchMovies());
     navigate('/movies');
   };
@@ -170,7 +171,9 @@ export const MoviesLayout = () => {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <Toolbar />
-        <Outlet />
+        <Container maxWidth="lg">
+          <Outlet />
+        </Container>
       </Box>
     </Box>
   );
