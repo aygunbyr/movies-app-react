@@ -114,9 +114,14 @@ export const MoviesLayout = () => {
         sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
       >
         <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Typography variant="h6" noWrap component="div">
-            Movies App
-          </Typography>
+          <Link
+            to="/movies"
+            style={{ textDecoration: 'none', color: 'inherit' }}
+          >
+            <Typography variant="h6" noWrap component="div">
+              Movies App
+            </Typography>
+          </Link>
           <div style={{ display: 'inline-flex' }}>
             <Search>
               <SearchIconWrapper>
