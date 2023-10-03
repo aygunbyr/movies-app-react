@@ -30,8 +30,6 @@ export const MovieDetail = () => {
     return <p>Error: {error}</p>;
   }
 
-  // Onceki film baslangicta goruntulenebilir bunu engellemek icin useEffect unmount aninda null yapabiliriz tekrar
-
   return (
     <>
       {movie && (
