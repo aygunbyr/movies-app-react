@@ -16,7 +16,7 @@ export const Loading = () => {
             display: 'flex',
           }}
         >
-          <Skeleton variant="rectangular" width={345} height={460} />
+          <Skeleton variant="rectangular" width={320} height={460} />
         </Box>
       ))}
     </Grid>

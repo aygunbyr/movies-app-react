@@ -34,7 +34,7 @@ export const MovieCard = ({ movie }: MovieCardProperties) => {
   }, [dispatch, movie]);
 
   return (
-    <Card sx={{ width: 345, textDecoration: 'none' }}>
+    <Card sx={{ width: 320, textDecoration: 'none' }}>
       <Link to={`/movie/${movie.imdbID}`} style={{ textDecoration: 'none' }}>
         <CardMedia
           component="img"

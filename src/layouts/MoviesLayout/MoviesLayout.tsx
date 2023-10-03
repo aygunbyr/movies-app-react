@@ -171,7 +171,7 @@ export const MoviesLayout = () => {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <Toolbar />
-        <Container maxWidth="lg">
+        <Container maxWidth="xl">
           <Outlet />
         </Container>
       </Box>
