@@ -1,29 +1,30 @@
 import { useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Box, Typography } from '@mui/material';
 import { MovieCard } from '../../components/MovieCard/MovieCard';
-import { useAppSelector } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
+  fetchMovies,
   selectMovies,
   selectSearchTerm,
   setSearchTerm,
 } from '../../redux/features/movies/moviesSlice';
 import { Loading } from '../../components/Loading/Loading';
-import { MOVIES_PATH } from '../../constants';
 
 const Movies = () => {
   const searchTerm = useAppSelector(selectSearchTerm);
   const { data: movies, error, isLoading } = useAppSelector(selectMovies);
 
-  const { search } = useParams();
-  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const { query } = useParams();
 
   useEffect(() => {
-    if (search) {
-      setSearchTerm(search);
-      navigate(`${MOVIES_PATH}?search=${search}`);
+    if (query) {
+      dispatch(setSearchTerm(query.trim()));
+      dispatch(fetchMovies());
     }
-  }, [search, navigate]);
+  }, [dispatch, query]);
 
   if (isLoading) {
     return (

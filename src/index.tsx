@@ -26,6 +26,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<MoviesLayout />}>
       <Route index element={<Navigate replace to={MOVIES_PATH} />} />
       <Route path={MOVIES_PATH} element={<Movies />} />
+      <Route path={`${MOVIES_PATH}/:query`} element={<Movies />} />
       <Route path={FAVORITES_PATH} element={<Favorites />} />
       <Route path="/movie/:imdbID" element={<MovieDetailPage />} />
     </Route>

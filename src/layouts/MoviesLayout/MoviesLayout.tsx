@@ -103,7 +103,7 @@ export const MoviesLayout = () => {
   const handleSearchTextSubmit = async () => {
     dispatch(setSearchTerm(searchText.trim()));
     dispatch(fetchMovies());
-    navigate(`${MOVIES_PATH}?search=${searchText}`);
+    navigate(`${MOVIES_PATH}/${searchText}`);
   };
 
   return (
