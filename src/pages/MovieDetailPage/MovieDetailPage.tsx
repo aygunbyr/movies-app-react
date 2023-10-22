@@ -15,7 +15,7 @@ import {
   selectFavorites,
   toggleFavoriteMovie,
 } from '../../redux/features/favorites/favoritesSlice';
-import { MovieDetail } from '../../types/MovieDetail';
+import type { MovieDetail } from '../../types';
 
 export const MovieDetailPage = () => {
   const { imdbID } = useParams();

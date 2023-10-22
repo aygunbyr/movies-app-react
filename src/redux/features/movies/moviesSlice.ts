@@ -1,8 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../store';
-import type { Movie } from '../../../types/Movie';
-import { MovieDetail } from '../../../types/MovieDetail';
+import type { Movie, MovieDetail } from '../../../types';
 
 interface MoviesState {
   movies: {

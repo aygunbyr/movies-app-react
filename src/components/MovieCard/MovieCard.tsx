@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { red } from '@mui/material/colors';
 
-import { Movie } from '../../types/Movie';
+import { Movie } from '../../types';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   selectFavorites,
